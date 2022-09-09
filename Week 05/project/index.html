@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+       <title>Product page</title>
+       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+
+    <div id="app">
+      <p v-if="inStock">In Stock</p>
+      <p v-else>Out of Stock</p>
+      <span v-if="onSale">On Sale!</span>
+    </div>
+    </body>
+    <script src="./index.js"></script>
+</html>    

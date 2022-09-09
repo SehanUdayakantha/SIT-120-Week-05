@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+       <title>Product page</title>
+    </head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .navbar{
+            overflow: hidden;
+            background-color: #020351;
+            position: fixed;
+            width: 100%;
+            height: 60px;
+            top:0;
+            z-index: 1;
+        }
+        .navbar a{
+            float: left;
+            display: block;
+            color: #18A0FB;
+            text-align: center;
+            padding: 20px 20px;
+            text-decoration: none;
+            font-size: small;
+        }
+        .navbar b{
+            float: left;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            font-size: larger;
+            background-color:#00B4D8; 
+            color: #020351; 
+            border-radius: 15px; 
+            padding: 15px 15px;
+        }
+        .navbar a:hover{
+           background-color: #18A0FB;
+           color: #020351;
+        }
+        .navbar a.active {
+            background-color: #18A0FB;
+            color: #020351;
+        }
+        .navbar .searchbar{
+            float: right;
+        }
+        .navbar input[type=text]{
+            padding: 6px;
+            margin-top: 8px;
+            font-size: small;
+            border: none;
+            border-radius: 10px;
+        }
+        .navbar .searchbar button{
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background-color:#18A0FB;
+            font-size: small;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .navbar .searchbar button:hover{
+            background: aqua;
+        }
+        img {width: 100%; max-width: 100%; height: auto; object-fit: contain; display: block;}
+        .welcomebox{
+            background-image: url(./l-intro-1607873776.jpg);
+            background-size:cover;
+            padding: 235px;
+            color: #020351;
+        }
+        .heading{
+            border-radius: 8px; 
+            background-color: #00B4D8;
+        }
+        .section2{
+            display: flex;
+            background-color: #00B4D8;
+        }
+        .section2 .itemdetails{
+            display: block;
+            background-color: #00B4D8;
+            margin-left: 20px;
+            margin-right: 50px;
+            font-size: large;
+        }
+        .section3{
+            margin-top: 20px;
+            position: absolute;
+            background-color:#00B4D8;
+        }
+        .Basket{
+            background-color:#00B4D8;
+        }
+        .section4{
+            background-color: #00B4D8;
+            text-align: center;
+        }
+        .sectionreviews{
+            background-color: #00B4D8;
+        }
+        .row{
+            clear:both;
+            display: flex;
+        }
+        .column{
+            float: left;
+            width: 30%;
+            padding: 10px;
+        }
+        @media screen and (max-width: 700px) {
+            
+            .navbar{
+                width: 100%;
+                height: 400px;
+                position: relative;
+                justify-content: center;
+            }
+            .navbar a{
+                background-color: #020351;
+                color: #00B4D8;
+                display: block;
+                padding: 12px;
+                text-decoration: none;
+            }
+            .navbar b{
+                display: block;
+                text-decoration: none;
+                font-size: larger;
+                background-color:#00B4D8; 
+                color: #020351; 
+                width: 100%;
+            }
+            .navbar .searchbar button{
+                padding: 6px 10px;
+                margin-top: 8px;
+                margin-right: 16px;
+                background-color:#18A0FB;
+                font-size: small;
+                cursor: pointer;
+                border-radius: 50px;
+            }
+            .navbar .searchbar{
+                float: none;
+            }
+            .navbar a, .navbar input[type=text], .navbar .searchbar button{
+                display: block;
+                text-align: center;
+                width: 100%;
+                margin: 0;
+                padding: 20px 10px;
+            }
+            .navbar a.active {
+                background-color: #18A0FB;
+                color: #020351;
+            }
+            .navbar input[type=text]{
+                border: 1px solid #020351;
+            }
+        }
+        </style>
+        <body>
+            <div id="app">
+            <body style="background-color:blue">
+                <!-- Navigation Bar -->
+                <div class="navbar">
+                    <b>Foodie Cafe</b>
+                    <a href="#home"class="active">Home</a>
+                    <a href="#foodcategories">Food Categories</a>
+                    <a href="contact">Contact</a>
+                    <a href="favorites">Favorites</a>
+                    <div class="searchbar">
+                        <input type="text" placeholder="Search" name="search">
+                        <button type="submit"></button>
+                    </div>
+                </div>
+                <product v-on:add-to-basket="updateBasket">
+                    <div class="Basket">
+                        <button @click="showBasket = !showBasket">Basket({{ basket.length }})</button>
+                        <div v-if="showBasket" class="basket-dropdown">
+                            <ul class="basket-dropdown__list">
+                              <li v-for="itemname in basket">
+                                {{ itemname }} (1)
+                              </li>
+                            </ul>
+                          </div>
+                    </div>
+                </product>
+            </div> 
+            <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>        
+        </body>
+        <script src="./product1.js"></script> 
+</html>
